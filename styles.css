@@ -1,0 +1,56 @@
+html, body {
+    background-color: black;
+    color: white;
+    height: 100%;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 15px;
+
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+#display {
+    overflow: hidden;
+    width: 100%;
+}
+
+.info { color: #999; }
+.hidden { opacity: 0; }
+
+#footer {
+    color: #555;
+    min-height: 26px;
+}
+
+@media (max-width: 640px) {
+    #chromosome { padding: 10px; }
+    #display { margin-top: 30px; }
+
+    .info {
+        color: #999;
+        margin-bottom: 10px;
+        padding: 0 5px;
+    }
+}
+
+@media (min-width: 641px) {
+    body { white-space: nowrap; }
+    .info { min-height: 26px; }
+
+    #display {
+        margin-top: -50px;
+        display: inline-block;
+        vertical-align: middle;
+        white-space: initial;
+        margin-left: -4px;
+    }
+
+    body:before {
+        content: '';
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle;
+        margin-right: -0.25em;
+    }
+}
