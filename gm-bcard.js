@@ -43,7 +43,7 @@ class Chromosome {
     let newGen = String.fromCharCode(this.code.charCodeAt(index) + upOrDown);
 
     for (let i = 0; i < this.code.length; i++) {
-      if (i == index) newGenome += newGen;
+      if (i === index) newGenome += newGen;
       else newGenome += this.code[i];
     }
 
@@ -130,7 +130,7 @@ class Population {
       this.members[i].mutate(0.5);
       this.members[i].calcCost(this.goal);
 
-      if (this.members[i].code == this.goal) {
+      if (this.members[i].code === this.goal) {
         this.sort();
         this.display.print(this.members[0].code);
         this.onComplete(this.generationNumber);
