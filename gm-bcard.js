@@ -40,9 +40,9 @@ class Chromosome {
     if (Math.random() > chance) return;
 
     let newGenome = '';
-    let index = Math.floor(Math.random() * this.code.length);
-    let upOrDown = Math.random() <= this.chanceToMutate ? -1 : 1;
-    let newGen = String.fromCharCode(this.code.charCodeAt(index) + upOrDown);
+    const index = Math.floor(Math.random() * this.code.length);
+    const upOrDown = Math.random() <= this.chanceToMutate ? -1 : 1;
+    const newGen = String.fromCharCode(this.code.charCodeAt(index) + upOrDown);
 
     for (let i = 0; i < this.code.length; i++) {
       if (i === index) newGenome += newGen;
@@ -60,10 +60,10 @@ class Chromosome {
    * @returns {Array} - two new children
    */
   mate(chromosome) {
-    let pivot = Math.round(this.code.length / 2) - 1;
+    const pivot = Math.round(this.code.length / 2) - 1;
 
-    let child1 = this.code.substr(0, pivot) + chromosome.code.substr(pivot);
-    let child2 = chromosome.code.substr(0, pivot) + this.code.substr(pivot);
+    const child1 = this.code.substr(0, pivot) + chromosome.code.substr(pivot);
+    const child2 = chromosome.code.substr(0, pivot) + this.code.substr(pivot);
 
     return [new Chromosome(child1), new Chromosome(child2)];
   }
@@ -105,7 +105,7 @@ class Population {
     this.display = new Display(document.getElementById('chromosome'));
 
     while (size--) {
-      let chromosome = new Chromosome();
+      const chromosome = new Chromosome();
       chromosome.random(this.goal.length);
       this.members.push(chromosome);
     }
@@ -128,7 +128,7 @@ class Population {
     }
 
     this.sort();
-    let children = this.members[0].mate(this.members[1]);
+    const children = this.members[0].mate(this.members[1]);
     this.members.splice(this.members.length - 2, 2, children[0], children[1]);
 
     this.display.print(this.members[0].code);
@@ -203,7 +203,7 @@ class Display {
 // --- - --- - --- DEMO --- - --- - --- //
 
 window.onload = () => {
-  let population = new Population(
+  const population = new Population(
     "Wszystkiego najlepszego dla Wikipedii! :)",
     20,
     showInfo
@@ -221,7 +221,7 @@ function showInfo(generation) {
   }, 1000);
 
   setTimeout(() => {
-    let interval = setInterval(() => {
+    const interval = setInterval(() => {
       document.getElementById('39').innerHTML = ';';
       document.getElementById('40').innerHTML = '>';
 
