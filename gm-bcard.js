@@ -13,13 +13,14 @@ class Chromosome {
    * @param {string} code
    */
   constructor(code) {
-    this.code = code || "";
+    this.code = code || '';
     this.cost = 10000;
     this.chanceToMutate = 0.5;
   }
 
   /**
-   * @description Replace current genome with new randomly generated
+   * @desc Replace current genome with new randomly generated
+   *
    * @param {integer} length - target genome length
    */
   random(length) {
@@ -31,7 +32,8 @@ class Chromosome {
   }
 
   /**
-   * @description Mutate chromosome with other
+   * @desc Mutate chromosome with other
+   *
    * @param {float} chance - chance to mutate
    */
   mutate(chance) {
@@ -51,8 +53,10 @@ class Chromosome {
   }
 
   /**
-   * @description Mate this chromosome with other
+   * @desc Mate this chromosome with other
+   *
    * @param {Object} chromosome
+   *
    * @returns {Array} - two new children
    */
   mate(chromosome) {
@@ -65,16 +69,19 @@ class Chromosome {
   }
 
   /**
-   * @description Calculate cost for chromosome
+   * @desc Calculate cost for chromosome
+   *
    * @param {string} compareTo
    */
   calcCost(compareTo) {
     let total = 0;
+
     for (let i = 0; i < this.code.length; i++) {
       total
         += (this.code.charCodeAt(i) - compareTo.charCodeAt(i))
         * (this.code.charCodeAt(i) - compareTo.charCodeAt(i));
     }
+
     this.cost = total;
   }
 }
@@ -105,14 +112,14 @@ class Population {
   }
 
   /**
-   * @description Sort members of current generation based on the cost
+   * @desc Sort members of current generation based on the cost
    */
   sort() {
     this.members.sort((a, b) => a.cost - b.cost);
   }
 
   /**
-   * @description All the actions performed on the population
+   * @desc All the actions performed on the population
    * on every generation. (mating, mutation etc.)
    */
   generation() {
@@ -138,7 +145,7 @@ class Population {
       }
     }
     this.generationNumber++;
-    setTimeout(function() { this.generation(); }.bind(this), 0.1);
+    setTimeout(() => { this.generation(); }, 0.1);
   }
 }
 
@@ -155,8 +162,10 @@ class Display {
   }
 
   /**
-   * @description Returns color based on the geneCost
+   * @desc Returns color based on the geneCost
+   *
    * @param {integer} geneCost
+   *
    * @returns {string}
    */
   getColor(geneCost) {
@@ -175,7 +184,8 @@ class Display {
   }
 
   /**
-   * @description Print painted genome to the DOM element
+   * @desc Print painted genome to the DOM element
+   *
    * @param {string} code - genome
    */
   print(code) {
@@ -201,7 +211,8 @@ window.onload = () => {
 };
 
 /**
- * @description Function displaying information after GA found combination.
+ * @desc Function displaying information after GA found combination.
+ *
  * @param {integer} generation
  */
 function showInfo(generation) {
